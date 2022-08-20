@@ -1,0 +1,306 @@
+<% layout('layouts/boilerplate') %>
+
+<div>
+    <div>
+        <% creature.proficiency=Math.floor((2 + (creature.cr - 1) / 4)) %>
+    </div>
+    <div>
+        <% creature.strMod=Math.floor((creature.str - 10)/2)%>
+        <% creature.dexMod=Math.floor((creature.dex - 10)/2)%>
+        <% creature.conMod=Math.floor((creature.con - 10)/2)%>
+        <% creature.intMod=Math.floor((creature.int - 10)/2)%>
+        <% creature.wisMod=Math.floor((creature.wis - 10)/2)%>
+        <% creature.chaMod=Math.floor((creature.cha - 10)/2)%>
+    </div>
+    <div>
+        <% const strSave=creature.strMod + creature.proficiency %>
+        <% const dexSave=creature.dexMod + creature.proficiency %>
+        <% const conSave=creature.conMod + creature.proficiency %>
+        <% const intSave=creature.intMod + creature.proficiency %>
+        <% const wisSave=creature.wisMod + creature.proficiency %>
+        <% const chaSave=creature.chaMod + creature.proficiency %>
+    </div>
+
+    <div>
+        <% const xp = (creature.cr + 3) * (creature.cr + 3) * 150 %>
+    </div>
+</div>
+
+<div class="container-fluid" id="monsterSheet">
+    <div class="row">
+        <div class="col-12">
+            <div>
+                <h1 class="mb-1 mt-2">
+                    <%= creature.name %>
+                </h1>
+
+                <em>
+                    <%= creature.size %>
+                    <%= creature.subType1 %>
+                    <%= creature.subType2 %>
+                    <%= creature.creatureType %>, <%= creature.alignment %>
+                </em>
+                </h6>
+            </div>
+
+            <img class="" alt=""
+                src="https://media-waterdeep.cursecdn.com/file-attachments/0/579/stat-block-header-bar.svg">
+            <h6>
+
+                <div class="row">
+                    <div>
+                        <div class="">
+                            <h5><b>Armor Class</b>
+                                <%= creature.ac %>
+                                (<%= creature.armorType %>)
+                            </h5>
+                        </div>
+                    </div>
+                    <div>
+                        <h5><b>Hitpoints</b>
+                            <%= creature.averageHitpoints %> (<%= creature.hpDieAmount %><%= creature.hpDieValue %> +
+                            <%= creature.hpModifier %>)
+                        </h5>
+                    </div>
+                    <div>
+                        <h5>
+                            <script>
+                                document.write(`<%- creature.movement %>`)
+                            </script>
+                        </h5>
+                    </div>
+                </div>
+
+                <img class="" alt=""
+                    src="https://media-waterdeep.cursecdn.com/file-attachments/0/579/stat-block-header-bar.svg">
+
+                <table class="table">
+                    <tr>
+                        <th scope="row" class="abilityScores" id="abilityScore">
+                            Str
+                        </th>
+                        <th scope="row" class="abilityScores" id="abilityScore">
+                            Dex
+                        </th>
+                        <th scope="row" class="abilityScores" id="abilityScore">
+                            Con
+                        </th>
+                        <th scope="row" class="abilityScores" id="abilityScore">
+                            Int
+                        </th>
+                        <th scope="row" class="abilityScores" id="abilityScore">
+                            Wis
+                        </th>
+                        <th scope="row" class="abilityScores" id="abilityScore">
+                            Cha
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td class="abilityScores" id="abilityScore">
+                            <%= creature.str %> (+<%= creature.strMod %>)
+                        </td>
+                        <td class="abilityScores" id="abilityScore">
+                            <%= creature.dex %> (+<%= creature.dexMod %>)
+                        </td>
+                        <td class="abilityScores" id="abilityScore">
+                            <%= creature.con %> (+<%= creature.conMod %>)
+                        </td>
+                        <td class="abilityScores" id="abilityScore">
+                            <%= creature.int %> (+<%= creature.intMod %>)
+                        </td>
+                        <td class="abilityScores" id="abilityScore">
+                            <%= creature.wis %> (+<%= creature.wisMod %>)
+                        </td>
+                        <td class="abilityScores" id="abilityScore">
+                            <%= creature.cha %> (+<%= creature.chaMod %>)
+                        </td>
+                    </tr>
+                </table>
+
+                <img class="" alt=""
+                    src="https://media-waterdeep.cursecdn.com/file-attachments/0/579/stat-block-header-bar.svg">
+
+
+                <div>
+                    <h5 id="stpList">
+                        <% if(creature.savingThrowProf.length> 0) {%>
+                        <b>Saving Throws: </b>
+                        <% for(let i=0; i < creature.savingThrowProf.length; i++) { %>
+                        <% if(creature.savingThrowProf[i]==='STR' ) { %>
+                        <%= creature.savingThrowProf[i] %>+<%= strSave %>
+                        <% } else if (creature.savingThrowProf[i]==='DEX' ) { %>
+                        <%= creature.savingThrowProf[i] %>+<%= dexSave %>
+                        <% } else if (creature.savingThrowProf[i]==='CON' ) { %>
+                        <%= creature.savingThrowProf[i] %>+<%= conSave %>
+                        <% } else if (creature.savingThrowProf[i]==='INT' ){ %>
+                        <%= creature.savingThrowProf[i] %>+<%= intSave%>
+                        <% } else if(creature.savingThrowProf[i]==='WIS') { %>
+                        <%= creature.savingThrowProf[i]%>+<%= wisSave %>
+                        <% } else if(creature.savingThrowProf[i]==='CHA') { %>
+                        <%= creature.savingThrowProf[i]%>+<%= chaSave %>
+                        <% } %>
+                        <% } %>
+                        <% } %>
+                </div>
+                <div>
+                    <h5>
+                        <% if(creature.skill.length> 0) {%>
+                        <b>Skills:</b>
+                        <% for(let i=0; i < creature.skill.length; i++) { %>
+                        <% if(creature.skill[i]==='Acrobatics' || creature.skill[i]==='Sleight of Hand' || creature.skill[i]==='Stealth' ) { %>
+                        <%= creature.skill[i] %>+<%= dexSave %>
+                        <% } else if(creature.skill[i]==='Animal Handling' || creature.skill[i]==='Insight' || creature.skill[i]==='Medicine' || creature.skill[i]==='Perception' || creature.skill[i]==='Survival' ) {%>
+                        <%= creature.skill[i] %>+<%= wisSave %>
+                        <% } else if(creature.skill[i]==='Arcana' || creature.skill[i]==='History' || creature.skill[i]==='Investigation' || creature.skill[i]==='Nature' || creature.skill[i]==='Religion' ) {%>
+                        <%= creature.skill[i] %>+<%= intSave %>
+                        <% } else if(creature.skill[i]==='Athletics' ) {%>
+                        <%=creature.skill[i] %>+<%= strSave %>
+                        <% } else if(creature.skill[i]==='Deception' || creature.skill[i]==='Intimidation' || creature.skill[i]==='Performance' || creature.skill[i]==='Persuasion'){%><%=creature.skill[i] %>+<%=chaSave%>
+                        <% } %>
+                        <% } %>
+                        <% } %>
+
+
+                    </h5>
+                </div>
+
+                <div>
+                    <h5>
+                        <script>
+                            document.write(`<%- creature.damageAdjustment %>`)
+                        </script>
+                    </h5>
+                </div>
+                <div>
+                    <h5>
+                        <% if(creature.conditionImmunity.length> 0) { %>
+                        <b>Condition Immunities </b>
+                        <%= creature.conditionImmunity %>
+                        <% } %>
+                    </h5>
+                </div>
+                <div>
+                    <h5>
+                        <script>
+                            document.write(`<%- creature.sense %>`)
+                        </script>
+
+                    </h5>
+                </div>
+                <div>
+                    <h5>
+                        <script>
+                            document.write(`<%- creature.language %>`)
+                        </script>
+                    </h5>
+                </div>
+                <div>
+                    <h5>
+                        <b>Challenge:</b>
+                        <%= creature.cr %> <% if(creature.cr > 30) { %> (<%= xp %> XP) <% } %>
+                    </h5>
+
+                </div>
+
+                <img class="" alt=""
+                    src="https://media-waterdeep.cursecdn.com/file-attachments/0/579/stat-block-header-bar.svg">
+
+
+                <div class="mb-3">
+                    <div class="abilityText" id="specialTrait">
+                        <script>
+                            document.write(`<%-creature.specialTrait%>`)
+                        </script>
+                    </div>
+                </div>
+        </div>
+
+        <h3 class="sheetTitle mt-3">Actions</h3>
+        <div class="abilityText">
+            <script>
+                document.write(`<%-creature.action%>`)
+            </script>
+        </div>
+        <% if(creature.bonusAction.length > 0) {%>
+        <h3 class="sheetTitle mt-4">Bonus Actions</h3>
+        <div class="abilityText">
+            <script>
+                document.write(`<%-creature.bonusAction%>`)
+            </script>
+        </div>
+        <% }  %>
+        <% if(creature.reaction.length > 0) {%>
+        <h3 class="sheetTitle mt-4">Reactions</h3>
+        <div class="abilityText">
+            <script>
+                document.write(`<%-creature.reaction%>`)
+            </script>
+        </div>
+        <% } %>
+        <% if(creature.legendaryAction.length > 0) {%>
+        <h3 class="sheetTitle mt-4">Legendary Actions</h3>
+        <div class="abilityText">
+            <script>
+                document.write(`<%-creature.legendaryAction%>`)
+            </script>
+        </div>
+        <% } %>
+        <% if(creature.mythicAction.length > 0) {%>
+        <h3 class="sheetTitle mt-4">Mythic Actions</h3>
+        <div class="abilityText">
+            <script>
+                document.write(`<%-creature.mythicAction%>`)
+            </script>
+        </div>
+        <% } %>
+
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-12">
+            <% if(creature.characteristic.length > 0) {%>
+            <h2 class="sheetTitle mt-4 mb-3">Description</h2>
+            <div class="abilityText">
+                <script>
+                    document.write(`<%-creature.characteristic%>`)
+                </script>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<img class="" alt="" src="https://media-waterdeep.cursecdn.com/file-attachments/0/579/stat-block-header-bar.svg">
+
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-12">
+            <% if(creature.lairAction.length > 0) {%>
+            <h2 class="sheetTitle mt-4 mb-3">Lair and Lair Actions</h2>
+            <div class="abilityText">
+                <script>
+                    document.write(`<%-creature.lairAction%>`)
+                </script>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%  if( currentUser && creature.author.equals(currentUser._id))  {%>
+<div class="card-body mt-3 mb-3">
+    <a class="card-link btn btn-info" href="/creatures/<%= creature._id %>/edit">Edit</a>
+    <form class="d-inline" action="/creatures/<%=creature._id%>?_method=DELETE" method="POST">
+        <button class="card-link btn btn-danger"
+            onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+    </form>
+    <% } %>
+</div>
+
+<ul class="list-group list-group-flush mb-3">
+    <li class="list-group-item">Submitted by <%= creature.author.username%></li>
+</ul>

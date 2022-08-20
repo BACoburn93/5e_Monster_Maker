@@ -1,0 +1,924 @@
+<% layout('layouts/boilerplate') %>
+
+
+
+
+
+<div class="container">
+
+    <h1 class="text-center mb-5">New Creature</h1>
+    <div class="row">
+        <form action="/creatures" method="POST" novalidate class="validated-form" id="monsterMaker"
+            onsubmit='return copyCreatureContent()'>
+
+            <!-- #region main line1-->
+            <div class="row mb-4">
+                <div class="col-3">
+                    <label class="form-label" for="name">Creature Name</label>
+                    <input class="form-control" type="text" id="name" name="creature[name]" value="Test Creature"
+                        required>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-3 form-group">
+                    <label class="form-label" for="type">Creature Type</label>
+                    <select class="form-control" type="text" id="type" name="creature[creatureType]" required>
+                        <option></option>
+                        <option>Aberration</option>
+                        <option>Beast</option>
+                        <option>Celestial</option>
+                        <option>Construct</option>
+                        <option>Dragon</option>
+                        <option>Elemental</option>
+                        <option>Fey</option>
+                        <option>Fiend</option>
+                        <option>Giant</option>
+                        <option>Humanoid</option>
+                        <option>Monstrosity</option>
+                        <option>Ooze</option>
+                        <option>Plant</option>
+                        <option>Undead</option>
+                        <option>Unknown</option>
+                    </select>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-3">
+                    <label class="form-label" for="sub-type">Creature Sub-type</label>
+                    <select class="form-control" type="text" id="sub-type" name="creature[subType1]">
+                        <option></option>
+                        <option>Aarokocra</option>
+                        <option>Air Genasi</option>
+                        <option>Angel</option>
+                        <option>Any Race</option>
+                        <option>Bard</option>
+                        <option>Beholder</option>
+                        <option>Blindheim</option>
+                        <option>Bullywug</option>
+                        <option>Cattle</option>
+                        <option>Changling</option>
+                        <option>Chromatic</option>
+                        <option>Cleric</option>
+                        <option>Cloud giant</option>
+                        <option>Demon</option>
+                        <option>Derro</option>
+                        <option>Devil</option>
+                        <option>Dinosaur</option>
+                        <option>Dire Corby</option>
+                        <option>Dragonborn</option>
+                        <option>Drow</option>
+                        <option>Druid</option>
+                        <option>Dwarf</option>
+                        <option>Earth Genasi</option>
+                        <option>Elf</option>
+                        <option>Fire Genasi</option>
+                        <option>Fire Giant</option>
+                        <option>Fire Newt</option>
+                        <option>Frost Giant</option>
+                        <option>Gem</option>
+                        <option>Giff</option>
+                        <option>Gith</option>
+                        <option>Gnome</option>
+                        <option>Goblin</option>
+                        <option>Goblinoid</option>
+                        <option>Grimlock</option>
+                        <option>Grippli</option>
+                        <option>Grung</option>
+                        <option>Hag</option>
+                        <option>Half-Black Dragon</option>
+                        <option>Half-Dragon</option>
+                        <option>Half-Elf</option>
+                        <option>Halfling</option>
+                        <option>Half-Orc</option>
+                        <option>Harengon</option>
+                        <option>High Elf</option>
+                        <option>Hill Gint</option>
+                        <option>Human</option>
+                        <option>Inevitable</option>
+                        <option>Jermlaine</option>
+                        <option>Kalashtar</option>
+                        <option>Kenku</option>
+                        <option>Kobold</option>
+                        <option>Kraul</option>
+                        <option>Kuo-toa</option>
+                        <option>Leonin</option>
+                        <option>Lizardfolk</option>
+                        <option>Locathah</option>
+                        <option>Meazel</option>
+                        <option>Merfolk</option>
+                        <option>Metallic</option>
+                        <option>Mind Flayer</option>
+                        <option>Mongrelfolk</option>
+                        <option>Monk</option>
+                        <option>Nagpa</option>
+                        <option>Ogre</option>
+                        <option>Orc</option>
+                        <option>Paladin</option>
+                        <option>Ranger</option>
+                        <option>Sahuagin</option>
+                        <option>Saurial</option>
+                        <option>Shadar-Kai</option>
+                        <option>Shield Dwarf</option>
+                        <option>Shifter</option>
+                        <option>Simic Hybrid</option>
+                        <option>Skulk</option>
+                        <option>Sorcerer</option>
+                        <option>Stone Giant</option>
+                        <option>Storm Giant</option>
+                        <option>Tabaxi</option>
+                        <option>Thri-keen</option>
+                        <option>Tiefling</option>
+                        <option>Titan</option>
+                        <option>Tortle</option>
+                        <option>Triton</option>
+                        <option>Troglodyte</option>
+                        <option>Warforged</option>
+                        <option>Warlock</option>
+                        <option>Water Genasi</option>
+                        <option>Wizard</option>
+                        <option>Xvart</option>
+                        <option>Yuan-ti</option>
+                        <option>Yugoloth</option>
+                    </select>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-3">
+                    <label class="form-label" for="sub-type-2">Other Sub-type</label>
+                    <select class="form-control" type="text" id="sub-type-2" name="creature[subType2]">
+                        <option></option>
+                        <option>Aarokocra</option>
+                        <option>Air Genasi</option>
+                        <option>Angel</option>
+                        <option>Any Race</option>
+                        <option>Bard</option>
+                        <option>Beholder</option>
+                        <option>Blindheim</option>
+                        <option>Bullywug</option>
+                        <option>Cattle</option>
+                        <option>Changling</option>
+                        <option>Chromatic</option>
+                        <option>Cleric</option>
+                        <option>Cloud giant</option>
+                        <option>Demon</option>
+                        <option>Derro</option>
+                        <option>Devil</option>
+                        <option>Dinosaur</option>
+                        <option>Dire Corby</option>
+                        <option>Dragonborn</option>
+                        <option>Drow</option>
+                        <option>Druid</option>
+                        <option>Dwarf</option>
+                        <option>Earth Genasi</option>
+                        <option>Elf</option>
+                        <option>Fire Genasi</option>
+                        <option>Fire Giant</option>
+                        <option>Fire Newt</option>
+                        <option>Frost Giant</option>
+                        <option>Gem</option>
+                        <option>Giff</option>
+                        <option>Gith</option>
+                        <option>Gnome</option>
+                        <option>Goblin</option>
+                        <option>Goblinoid</option>
+                        <option>Grimlock</option>
+                        <option>Grippli</option>
+                        <option>Grung</option>
+                        <option>Hag</option>
+                        <option>Half-Black Dragon</option>
+                        <option>Half-Dragon</option>
+                        <option>Half-Elf</option>
+                        <option>Halfling</option>
+                        <option>Half-Orc</option>
+                        <option>Harengon</option>
+                        <option>High Elf</option>
+                        <option>Hill Gint</option>
+                        <option>Human</option>
+                        <option>Inevitable</option>
+                        <option>Jermlaine</option>
+                        <option>Kalashtar</option>
+                        <option>Kenku</option>
+                        <option>Kobold</option>
+                        <option>Kraul</option>
+                        <option>Kuo-toa</option>
+                        <option>Leonin</option>
+                        <option>Lizardfolk</option>
+                        <option>Locathah</option>
+                        <option>Meazel</option>
+                        <option>Merfolk</option>
+                        <option>Metallic</option>
+                        <option>Mind Flayer</option>
+                        <option>Mongrelfolk</option>
+                        <option>Monk</option>
+                        <option>Nagpa</option>
+                        <option>Ogre</option>
+                        <option>Orc</option>
+                        <option>Paladin</option>
+                        <option>Ranger</option>
+                        <option>Sahuagin</option>
+                        <option>Saurial</option>
+                        <option>Shadar-Kai</option>
+                        <option>Shield Dwarf</option>
+                        <option>Shifter</option>
+                        <option>Simic Hybrid</option>
+                        <option>Skulk</option>
+                        <option>Sorcerer</option>
+                        <option>Stone Giant</option>
+                        <option>Storm Giant</option>
+                        <option>Tabaxi</option>
+                        <option>Thri-keen</option>
+                        <option>Tiefling</option>
+                        <option>Titan</option>
+                        <option>Tortle</option>
+                        <option>Triton</option>
+                        <option>Troglodyte</option>
+                        <option>Warforged</option>
+                        <option>Warlock</option>
+                        <option>Water Genasi</option>
+                        <option>Wizard</option>
+                        <option>Xvart</option>
+                        <option>Yuan-ti</option>
+                        <option>Yugoloth</option>
+                    </select>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+            </div>
+            <!-- #endregion main -->
+
+            <div class="row mb-4">
+                <div class="col-2">
+                    <label class="form-label" for="alignment">Alignment</label>
+                    <select class="form-control" type="text" id="alignment" name="creature[alignment]" required>
+                        <option></option>
+                        <option>Chaotic Evil</option>
+                        <option>Neutral Evil</option>
+                        <option>Lawful Evil</option>
+                        <option>Chaotic Neutral</option>
+                        <option>True Neutral</option>
+                        <option>Lawful Neutral</option>
+                        <option>Chaotic Good</option>
+                        <option>Neutral Good</option>
+                        <option>Lawful Good</option>
+                    </select>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-2">
+                    <label class="form-label" for="swarm">Swarm?</label>
+                    <select class="form-control" type="text" id="swarm" name="creature[swarm]">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-2">
+                    <label class="form-label" for="swarm-type">Swarm Type</label>
+                    <select class="form-control" type="text" id="swarm-type" name="creature[swarmType]">
+                        <option></option>
+                        <option>Aberration</option>
+                        <option>Beast</option>
+                        <option>Celestial</option>
+                        <option>Construct</option>
+                        <option>Dragon</option>
+                        <option>Elemental</option>
+                        <option>Fey</option>
+                        <option>Fiend</option>
+                        <option>Giant</option>
+                        <option>Humanoid</option>
+                        <option>Monstrosity</option>
+                        <option>Ooze</option>
+                        <option>Plant</option>
+                        <option>Undead</option>
+                        <option>Unknown</option>
+                    </select>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-2">
+                    <label class="form-label" for="size">Size</label>
+                    <select class="form-control" type="text" id="size" name="creature[size]" required>
+                        <option></option>
+                        <option>Cosmic</option>
+                        <option>Colossal</option>
+                        <option>Gargantuan (12x12)</option>
+                        <option>Gargantuan (11x11)</option>
+                        <option>Gargantuan (10x10)</option>
+                        <option>Gargantuan (9x9)</option>
+                        <option>Gargantuan (8x8)</option>
+                        <option>Gargantuan (7x7)</option>
+                        <option>Gargantuan (6x6)</option>
+                        <option>Gargantuan (5x5)</option>
+                        <option>Gargantuan</option>
+                        <option>Huge</option>
+                        <option>Large</option>
+                        <option>Medium</option>
+                        <option>Small</option>
+                        <option>Tiny</option>
+                    </select>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-2">
+                    <label class="form-label" for="unique">Unique?</label>
+                    <select class="form-control" type="text" id="unique" name="creature[unique]">
+                        <option></option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+
+                <div class="col-2">
+                    <label class="form-label" for="challenge-rating">Challenge Rating</label>
+                    <select class="form-control" type="text" id="challenge-rating" name="creature[cr]" required>
+                        <option>0</option>
+                        <option>1/8</option>
+                        <option>1/4</option>
+                        <option>1/2</option>
+                        <% for(let i=1; i <=100; i++) { %>
+                        <option>
+                            <%= `${i}` %>
+                        </option>
+                        <% } %>
+                    </select>
+
+                    <div class="valid-feedback">Correct</div>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-4">
+                    <label class="form-label" for="armor-class">Armor Class</label>
+                    <input class="form-control" type="text" id="armor-class" name="creature[ac]" required>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-4">
+                    <label class="form-label" for="armor-type">Armor Type</label>
+                    <input class="form-control" type="text" id="armor-type" name="creature[armorType]">
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-4">
+                    <label class="form-label" for="passive-perception">Passive Perception</label>
+                    <input class="form-control" type="text" id="passive-perception" name="creature[passivePerception]"
+                        required>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-3">
+                    <label class="form-label" for="hp-die-amnt">Hit Point Die Amount</label>
+                    <input class="form-control" type="text" id="hp-die-amnt" name="creature[hpDieAmount]" required>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-3">
+                    <label class="form-label" for="hp-die-val">Hit Point Die Value</label>
+                    <select class="form-control" type="text" id="hp-die-val" name="creature[hpDieValue]" required>
+                        <option></option>
+                        <option>d4</option>
+                        <option>d6</option>
+                        <option>d8</option>
+                        <option>d10</option>
+                        <option>d12</option>
+                        <option>d20</option>
+                        <option>d100</option>
+                    </select>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-3">
+                    <label class="form-label" for="hp-mod">Hit Point Modifier</label>
+                    <input class="form-control" type="text" id="hp-mod" name="creature[hpModifier]" required>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-3">
+                    <label class="form-label" for="avg-hp">Average Hitpoints</label>
+                    <input class="form-control" type="text" id="avg-hp" name="creature[averageHitpoints]" required>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-2">
+                    <label class="form-label" for="str-score">Strength Score</label>
+                    <input class="form-control" type="text" id="str-score" name="creature[str]" required value="100">
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-2">
+                    <label class="form-label" for="dex-score">Dexterity Score</label>
+                    <input class="form-control" type="text" id="dex-score" name="creature[dex]" required value="80">
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-2">
+                    <label class="form-label" for="con-score">Constitution Score</label>
+                    <input class="form-control" type="text" id="con-score" name="creature[con]" required value="96">
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-2">
+                    <label class="form-label" for="int-score">Intelligence Score</label>
+                    <input class="form-control" type="text" id="int-score" name="creature[int]" required value="76">
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-2">
+                    <label class="form-label" for="wis-score">Wisdom Score</label>
+                    <input class="form-control" type="text" id="wis-score" name="creature[wis]" required value="88">
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-2">
+                    <label class="form-label" for="cha-score">Charisma Score</label>
+                    <input class="form-control" type="text" id="cha-score" name="creature[cha]" required value="60">
+                    <div class="valid-feedback">Correct</div>
+                </div>
+            </div>
+
+
+
+            <div class="row mb-4 mt-5">
+                <div class="col-5 border border-secondary checkContainer">
+                    <div class="text-center">
+                        <label class="form-label border-bottom" for="profSavingThrows" id="savingThrowProf">Saving
+                            Throw
+                            Proficiencies</label>
+                    </div>
+                    <div>
+                        <input class="stp" type="checkbox" name="creature[savingThrowProf]" id="strength" value="STR" />
+                        <label for="strength">Strength</label>
+                    </div>
+                    <div>
+                        <input class="stp" type="checkbox" name="creature[savingThrowProf]" id="dexterity"
+                            value="DEX" />
+                        <label for="dexterity">Dexterity</label>
+                    </div>
+                    <div>
+                        <input class="stp" type="checkbox" name="creature[savingThrowProf]" id="constitution"
+                            value="CON" />
+                        <label for="constitution">Constitution</label>
+                    </div>
+                    <div>
+                        <input class="stp" type="checkbox" name="creature[savingThrowProf]" id="intelligence"
+                            value="INT" />
+                        <label for="intelligence">Intelligence</label>
+                    </div>
+                    <div>
+                        <input class="stp" type="checkbox" name="creature[savingThrowProf]" id="wisdom" value="WIS" />
+                        <label for="wisdom">Wisdom</label>
+                    </div>
+                    <div>
+                        <input class="stp" type="checkbox" name="creature[savingThrowProf]" id="charisma" value="CHA" />
+                        <label for="charisma">Charisma</label>
+                    </div>
+
+                    <div class="valid-feedback">Correct</div>
+
+
+                </div>
+
+                <div class="col-2"></div>
+
+                <div class="col-5 border border-secondary checkContainer">
+                    <div class="row">
+                        <div class="text-center">
+                            <label class="form-label border-bottom" for="conditionImmunities">Condition
+                                Immunities</label>
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[conditionImmunity]" id="blinded"
+                                    value=" Blinded" />
+                                <label for="blinded">Blinded</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[conditionImmunity]" id="charmed"
+                                    value=" Charmed" />
+                                <label for="charmed">Charmed</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[conditionImmunity]" id="deafened"
+                                    value=" Deafened" />
+                                <label for="deafened">Deafened</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[conditionImmunity]" id="exhaustion"
+                                    value=" Exhaustion" />
+                                <label for="exhaustion">Exhaustion</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[conditionImmunity]" id="frightened"
+                                    value=" Frightened" />
+                                <label for="frightened">Frightened</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[conditionImmunity]" id="grappled"
+                                    value=" Grappled" />
+                                <label for="grappled">Grappled</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[conditionImmunity]" id="incapacitated"
+                                    value=" Incapacitated" />
+                                <label for="incapacitated">Incapacitated</label>
+                            </div>
+                            <div>
+                                <input class="stp mb-3" type="checkbox" name="creature[conditionImmunity]"
+                                    id="invisible" value=" Invisible" />
+                                <label for="invisible">Invisible</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[conditionImmunity]" id="paralyzed"
+                                    value=" Paralyzed" />
+                                <label for="paralyzed">Paralyzed</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[conditionImmunity]" id="petrified"
+                                    value=" Petrified" />
+                                <label for="petrified">Petrified</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[conditionImmunity]" id="poisoned"
+                                    value=" Poisoned" />
+                                <label for="poisoned">Poisoned</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[conditionImmunity]" id="prone"
+                                    value=" Prone" />
+                                <label for="prone">Prone</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[conditionImmunity]" id="restrained"
+                                    value=" Restrained" />
+                                <label for="restrained">Restrained</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[conditionImmunity]" id="stunned"
+                                    value=" Stunned" />
+                                <label for="stunned">Stunned</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[conditionImmunity]" id="unconscious"
+                                    value=" Unconscious" />
+                                <label for="unconscious">Unconscious</label>
+                            </div>
+                        </div>
+
+                        <div class="valid-feedback">Correct</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row mb-5">
+                <div class="col-5 border border-secondary checkContainer">
+                    <div class="row">
+                        <div class="text-center">
+                            <label class="form-label border-bottom" for="environment">Environments</label>
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[environment]" id="arctic"
+                                    value="Arctic" />
+                                <label for="arctic">Arctic</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[environment]" id="coastal"
+                                    value="Coastal" />
+                                <label for="coastal">Coastal</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[environment]" id="desert"
+                                    value="Desert" />
+                                <label for="desert">Desert</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[environment]" id="forest"
+                                    value="Forest" />
+                                <label for="forest">Forest</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[environment]" id="grassland"
+                                    value="Grassland" />
+                                <label for="grassland">Grassland</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[environment]" id="hill"
+                                    value="Hill" />
+                                <label for="hill">Hill</label>
+                            </div>
+
+                            <div class="col-2"></div>
+
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[environment]" id="mountain"
+                                    value="Mountain" />
+                                <label for="mountain">Mountain</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[environment]" id="swamp"
+                                    value="Swamp" />
+                                <label for="swamp">Swamp</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[environment]" id="underdark"
+                                    value="Underdark" />
+                                <label for="underdark">Underdark</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[environment]" id="underwater"
+                                    value="Underwater" />
+                                <label for="underwater">Underwater</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[environment]" id="urban"
+                                    value="Urban" />
+                                <label for="urban">Urban</label>
+                            </div>
+
+                        </div>
+
+                        <div class="valid-feedback">Correct</div>
+                    </div>
+                </div>
+
+                <div class="col-2"></div>
+
+                <div class="col-5 border border-secondary checkContainer">
+                    <div class="row">
+                        <div class="text-center">
+                            <label class="form-label border-bottom" for="skill">Skills</label>
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="acrobatics"
+                                    value="Acrobatics" />
+                                <label for="acrobatics">Acrobatics</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="animal-handling"
+                                    value="Animal Handling" />
+                                <label for="animal-handling">Animal Handling</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="arcana" value="Arcana" />
+                                <label for="arcana">Arcana</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="athletics"
+                                    value="Athletics" />
+                                <label for="athletics">Athletics</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="deception"
+                                    value="Deception" />
+                                <label for="deception">Deception</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="history"
+                                    value="History" />
+                                <label for="history">History</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="insight"
+                                    value="Insight" />
+                                <label for="insight">Insight</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="intimidation"
+                                    value="Intimidation" />
+                                <label for="intimidation">Intimidation</label>
+                            </div>
+                            <div>
+                                <input class="stp mb-3" type="checkbox" name="creature[skill]" id="investigation"
+                                    value="Investigation" />
+                                <label for="investigation">Investigation</label>
+                            </div>
+
+
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="medicine"
+                                    value="Medicine" />
+                                <label for="medicine">Medicine</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="nature" value="Nature" />
+                                <label for="nature">Nature</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="perception"
+                                    value="Perception" />
+                                <label for="perception">Perception</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="performance"
+                                    value="Performance" />
+                                <label for="performance">Performance</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="persuasion"
+                                    value="Persuasion" />
+                                <label for="persuasion">Persuasion</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="religion"
+                                    value="Religion" />
+                                <label for="religion">Religion</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="sleight-of-hand"
+                                    value="Sleight of Hand" />
+                                <label for="sleight-of-hand">Sleight of Hand</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="stealth"
+                                    value="Stealth" />
+                                <label for="stealth">Stealth</label>
+                            </div>
+                            <div>
+                                <input class="stp" type="checkbox" name="creature[skill]" id="survival"
+                                    value="Survival" />
+                                <label for="survival">Survival</label>
+                            </div>
+
+                        </div>
+
+                        <div class="valid-feedback">Correct</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div>
+                <div class="col-12">
+                    <div class="form-spacing mt-4 mb-1">
+                        <label class="form-label-2" for="dam-adj">Damage Adjustments</label>
+                    </div>
+                    <textarea class="classic" type="text" id="dam-adj" name="creature[damageAdjustment]" value="123"
+                        required>
+                        <p><strong>Damage Resistances</strong></p>
+                        <p><strong>Damage Immunities</strong></p>
+                        <p><strong>Damage Vulnerabilities</strong></p>
+                    </textarea>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="form-spacing mt-4 mb-1">
+                        <label class="form-label-2" for="language">Languages</label>
+                    </div>
+                    <textarea class="classic" type="text" id="language" name="creature[language]" value="123"
+                        required><strong>Languages</strong></textarea>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="form-spacing mt-4 mb-1">
+                        <label class="form-label-2" for="sense">Senses</label>
+                    </div>
+                    <textarea class="classic" type="text" id="sense" name="creature[sense]" value="123"
+                        required><strong>Senses</strong></textarea>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="form-spacing mt-4 mb-1">
+                        <label class="form-label-2" for="movement">Movement</label>
+                    </div>
+                    <textarea class="classic" type="text" id="movement" name="creature[movement]" value="123"
+                        required><strong>Speed</strong></textarea>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div class="form-spacing mt-4 mb-1">
+                        <label class="form-label-2 formTextArea" for="special-traits" name="Source">Special
+                            Traits</label>
+                    </div>
+                    <textarea class="classic" id="special-traits" name="creature[specialTrait]">
+            </textarea>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-spacing mt-4 mb-1">
+                        <label class="form-label-2 formTextArea" for="action" name="Source">Actions</label>
+                    </div>
+                    <textarea class="classic" id="action" name="creature[action]">
+            </textarea>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div class="form-spacing mt-4 mb-1">
+                        <label class="form-label-2 formTextArea" for="bonus-action" name="Source">Bonus Actions</label>
+                    </div>
+                    <textarea class="classic" id="bonus-action" name="creature[bonusAction]">
+            </textarea>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-spacing mt-4 mb-1">
+                        <label class="form-label-2 formTextArea" for="reaction" name="Source">Reactions</label>
+                    </div>
+                    <textarea class="classic" id="reaction" name="creature[reaction]">
+            </textarea>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div class="form-spacing mt-4 mb-1">
+                        <label class="form-label-2 formTextArea" for="legendary-action" name="Source">Legendary
+                            Actions</label>
+                    </div>
+                    <textarea class="classic" id="legendary-action" name="creature[legendaryAction]">
+            </textarea>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-spacing mt-4 mb-1">
+                        <label class="form-label-2 formTextArea" for="mythic-action" name="Source">Mythic
+                            Actions</label>
+                    </div>
+                    <textarea class="classic" id="mythic-action" name="creature[mythicAction]">
+            </textarea>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="form-spacing mt-4 mb-1">
+                        <label class="form-label-2 formTextArea" for="lair-action" name="Source">Lair
+                            Actions</label>
+                    </div>
+                    <textarea class="classic" id="lair-action" name="creature[lairAction]">
+            </textarea>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="form-spacing mt-4 mb-1">
+                        <label class="form-label-2 formTextArea" for="divine-action" name="Source">Divine
+                            Actions</label>
+                    </div>
+                    <textarea class="classic" id="divine-action" name="creature[divineAction]">
+            </textarea>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="form-spacing mt-4 mb-1">
+                        <label class="form-label-2 formTextArea" for="characteristic"
+                            name="Source">Characteristics</label>
+                    </div>
+                    <textarea class="classic" id="characteristic" name="creature[characteristic]">
+            </textarea>
+                    <div class="valid-feedback">Correct</div>
+                </div>
+            </div>
+
+            <!-- <div class="form-check form-switch mt-4 mb-5">
+                <input class="form-check-input" type="checkbox" id="sharable" name="creature[sharable]" value="true">
+                <label class="form-check-label" for="sharable">Would you like this creature to be sharable?</label>
+            </div> -->
+
+            <div class="mb-3">
+                <button class="btn btn-success">Add Creature</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
