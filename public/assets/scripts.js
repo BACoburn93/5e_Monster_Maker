@@ -142,6 +142,17 @@ const demoBaseConfig = {
 
 tinymce.init(demoBaseConfig);
 
+const sharable = document.querySelector('#sharable');
+sharable.value = false;
+sharable.addEventListener('change', () => {
+    if (sharable.checked === false) {
+        sharable.value = false
+        console.log(sharable.value)
+    } else {
+        sharable.value = true
+        console.log(sharable.value)
+    }
+})
 
 alert.addEventListener('click', (e) => {
     e.target.remove();
